@@ -4,5 +4,5 @@
     { "caption": "PowerCursors: Previous cursor", "command": "power_cursor_select", "args": { "forward": false } },
     { "caption": "PowerCursors: Next cursor", "command": "power_cursor_select", "args": { "forward": true } },
     { "caption": "PowerCursors: Activate all cursors", "command": "power_cursor_activate" },
-    { "caption": "PowerCursors: Exit", "command": "power_cursor_exit" },
+    { "caption": "PowerCursors: Exit", "command": "power_cursor_exit" }
 ]
