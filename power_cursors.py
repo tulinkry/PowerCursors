@@ -1,8 +1,11 @@
 import sublime, sublime_plugin
 
+#### I did some work to make it available for ST2
+#### @tulinkry
+
 _TRANSITION_CURSOR_SCOPE_TYPE = 'transition_cursor'
 _TRANSITION_CURSOR_ICON       = 'dot'
-_TRANSITION_CURSOR_FLAGS      = sublime.DRAW_EMPTY | sublime.DRAW_NO_FILL | sublime.PERSISTENT
+_TRANSITION_CURSOR_FLAGS      = sublime.DRAW_EMPTY | sublime.PERSISTENT
 
 
 #### Helper functions for adding and restoring selections ####
@@ -11,9 +14,9 @@ def set_transition_sels(view, sels):
     """Set the updated transition selections and marks.
     """
     view.add_regions("transition_sels", sels,
-                     scope = _TRANSITION_CURSOR_SCOPE_TYPE,
-                     icon  = _TRANSITION_CURSOR_ICON,
-                     flags = _TRANSITION_CURSOR_FLAGS)
+                     _TRANSITION_CURSOR_SCOPE_TYPE,
+                     _TRANSITION_CURSOR_ICON,
+                     _TRANSITION_CURSOR_FLAGS)
 
 def find_prev_sel(trans_sels, current_sel):
     """Find the region in `trans_sels` that is right before `current_sel`.
@@ -147,7 +150,8 @@ class PowerCursorActivateCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         view = self.view
         sels = view.get_regions("transition_sels")
-        view.sel().add_all(sels)
+        for sel in sels:
+            view.sel().add(sel)
         view.erase_regions("transition_sels")
         view.erase_regions("mark")
 
