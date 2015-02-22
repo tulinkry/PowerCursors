@@ -11,5 +11,5 @@
     { "keys": ["ctrl+]"], "command": "power_cursor_select", "args": { "forward": true } },
     { "keys": ["escape"], "command": "power_cursor_exit",
       "context": [ { "key": "in_cursor_transition" } ]
-    },
+    }
 ]
